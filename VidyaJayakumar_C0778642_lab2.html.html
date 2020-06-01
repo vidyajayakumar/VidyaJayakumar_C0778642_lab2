@@ -1,0 +1,75 @@
+<html>
+<style>
+    table,
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+<font size="8" color="green">Final test lab</font><br>
+<div id="hide">
+    <br> Number of rows: <input type="text" id="t1" /><br>
+
+    <br> Number of cols: <input type="text" id="t2" /><br><br>
+
+    <button id="b1" onclick="generateTable()">Generate Table</button><br><br>
+</div>
+<button id="b2" onclick="addColumn()">Add Column</button>
+
+<button id="b3" onclick="addRow()">Add Row</button>
+
+<script language="javascript">
+    function generateTable() {
+        var r = document.getElementById("t1").value;
+        var c = document.getElementById("t2").value;
+        if (isNaN(r) || isNaN(c)) {
+            alert("The inputs must be a number");
+        } else {
+            var x = document.createElement("TABLE");
+            x.setAttribute("id", "mytable");
+            document.body.appendChild(x);
+            var i
+            var j
+            for (let i = 0; i < r; i++) {
+                var y = document.createElement("TR");
+                document.getElementById("mytable").appendChild(y);
+                for (let j = 0; j < c; j++) {
+                    var z = document.createElement("TD");
+                    var t = document.createTextNode("cell " + i + "," + j + " ");
+                    z.appendChild(t);
+                    document.getElementById("mytable").appendChild(z);
+                }
+                var t1 = document.getElementById("hide");
+                t1.style.display = "none";
+            }
+
+        }
+    }
+
+    function addColumn() {
+        var x = document.getElementById("myTable");
+
+        document.body.appendChild(x);
+        var col = x.insertCell(0);
+        for (let j = 0; j < c; j++) {
+            var cell = col.insertCell(j);
+            cell.innerHTML = "New Col";
+        }
+
+    }
+
+    function addRow() {
+        var x = document.getElementById("myTable");
+        document.body.appendChild(x);
+        var row = x.insertRow(0);
+        for (let j = 0; j < c; j++) {
+            var cell = row.insertCell(j);
+            cell.innerHTML = "New Row";
+        }
+
+    }
+
+    //Your code goes here
+</script>
+
+</html>
